@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Love's Garden</title>
+
+    <style>
+
+        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap");
+
+
+
+        html {
+
+            height: 200vh;
+
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+
+            background-size: 400% 400%;
+
+            animation: gradientShift 8s ease infinite;
+
+            cursor: pointer;
+
+        }
+
+
+
+        @keyframes gradientShift {
+
+            0% { background-position: 0% 50%; }
+
+            50% { background-position: 100% 50%; }
+
+            100% { background-position: 0% 50%; }
+
+        }
+
+
+
+        body {
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            border-bottom: 10vh #4a5c3a solid;
+
+            box-sizing: border-box;
+
+            position: relative;
+
+        }
+
+
+
+        h1 {
+
+            text-align: center;
+
+            color: #fff;
+
+            font-family: "Great Vibes", cursive;
+
+            font-size: 48px;
+
+            font-weight: 400;
+
+            position: absolute;
+
+            z-index: 1;
+
+            width: 100%;
+
+            top: 0vh;
+
+            transform: translate(0, 100vh);
+
+            animation: move 1s 2.5s forwards;
+
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4), 0 0 20px rgba(255,255,255,0.3);
+
+            letter-spacing: 2px;
+
+        }
+
+
+
+        h1 small {
+
+            font-family: "Dancing Script", cursive;
+
+            font-size: 24px;
+
+            font-weight: 500;
+
+            display: block;
+
+            margin-top: 10px;
+
+            color: #ffe4e6;
+
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+        }
+
+
+
+        @keyframes move {
+
+            0% {
+
+                transform: translate(0, 100vh);
+
+            }
+
+            100% {
+
+                transform: translate(0vh, 0);
+
+            }
+
+        }
+
+
+
+        .sunflwr {
+
+            width: 80vmin;
+
+            height: 80vmin;
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 50%;
+
+            transform: translate(-50%, 0%);
+
+        }
+
+
+
+        .sunflwr__leaf--left, .sunflwr__leaf--right {
+
+            width: 0%;
+
+            height: 20%;
+
+            border-radius: 0% 50% 0% 50%;
+
+            position: absolute;
+
+            background: linear-gradient(45deg, #6f8e4b, #8fae6b);
+
+            top: 70%;
+
+            left: 45%;
+
+            transform: translate(-100%, -50%) rotate(-20deg);
+
+            animation: sunflwr__leaf forwards 1s 0.5s;
+
+        }
+
+
+
+        .sunflwr__leaf--right {
+
+            top: 80%;
+
+            left: 55%;
+
+            transform: translate(0%, -50%) rotate(-70deg);
+
+        }
+
+
+
+        @keyframes sunflwr__leaf {
+
+            0% {
+
+                width: 0%;
+
+                border: 0px solid black;
+
+            }
+
+            100% {
+
+                width: 20%;
+
+                border: 2px solid #2d3a1f;
+
+            }
+
+        }
+
+
+
+        .sunflwr__stem {
+
+            position: absolute;
+
+            transform: translate(-50%, 0%);
+
+            width: 5%;
+
+            height: 60%;
+
+            background: linear-gradient(to bottom, #556d39, #4a5c34);
+
+            left: 50%;
+
+            bottom: 0%;
+
+            border: 2px solid #2d3a1f;
+
+            animation: sunflwr__stem forwards 1s;
+
+        }
+
+
+
+        @keyframes sunflwr__stem {
+
+            0% {
+
+                height: 0;
+
+            }
+
+            100% {
+
+                height: 60%;
+
+            }
+
+        }
+
+
+
+        .sunflwr__center {
+
+            border-radius: 50%;
+
+            background-color: #3c1f03;
+
+            transform: translate(-50%, -50%);
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 40%;
+
+            z-index: 2;
+
+            animation: sunflwr__center 1s 1s forwards;
+
+            background-size: cover;
+
+            background-position: center;
+
+            border: 3px solid #8B4513;
+
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2);
+
+        }
+
+
+
+        @keyframes sunflwr__center {
+
+            0% {
+
+                width: 0%;
+
+                height: 0%;
+
+            }
+
+            100% {
+
+                width: 25%;
+
+                height: 25%;
+
+            }
+
+        }
+
+
+
+        .sunflwr__pedal--1, .sunflwr__pedal--7, .sunflwr__pedal--12,
+
+        .sunflwr__pedal--11, .sunflwr__pedal--10, .sunflwr__pedal--9,
+
+        .sunflwr__pedal--8, .sunflwr__pedal--6, .sunflwr__pedal--5,
+
+        .sunflwr__pedal--4, .sunflwr__pedal--3, .sunflwr__pedal--2 {
+
+            border-radius: 50%;
+
+            background: linear-gradient(45deg, #f2fe00, #ffeb3b);
+
+            transform: translate(-50%, -50%);
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 40%;
+
+            animation: grow-pedal-back 1s 1.5s forwards;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+
+        }
+
+
+
+        .sunflwr__pedal--2 {
+
+            transform: translate(-50%, -50%) rotate(30deg);
+
+        }
+
+
+
+        .sunflwr__pedal--3 {
+
+            transform: translate(-50%, -50%) rotate(60deg);
+
+        }
+
+
+
+        .sunflwr__pedal--4 {
+
+            transform: translate(-50%, -50%) rotate(90deg);
+
+        }
+
+
+
+        .sunflwr__pedal--5 {
+
+            transform: translate(-50%, -50%) rotate(120deg);
+
+        }
+
+
+
+        .sunflwr__pedal--6 {
+
+            transform: translate(-50%, -50%) rotate(150deg);
+
+        }
+
+
+
+        @keyframes grow-pedal-back {
+
+            0% {
+
+                width: 0%;
+
+                height: 0%;
+
+                border: 0px solid black;
+
+            }
+
+            100% {
+
+                width: 15%;
+
+                height: 45%;
+
+                border: 2px solid #d4af37;
+
+            }
+
+        }
+
+
+
+        .sunflwr__pedal--7, .sunflwr__pedal--12, .sunflwr__pedal--11,
+
+        .sunflwr__pedal--10, .sunflwr__pedal--9, .sunflwr__pedal--8 {
+
+            border-radius: 20% 50% 20% 50%;
+
+            transform: translate(-50%, -50%) rotate(15deg);
+
+            animation: grow-pedal-front 1s 2s forwards;
+
+        }
+
+
+
+        .sunflwr__pedal--8 {
+
+            transform: translate(-50%, -50%) rotate(45deg);
+
+        }
+
+
+
+        .sunflwr__pedal--9 {
+
+            transform: translate(-50%, -50%) rotate(75deg);
+
+        }
+
+
+
+        .sunflwr__pedal--10 {
+
+            transform: translate(-50%, -50%) rotate(105deg);
+
+        }
+
+
+
+        .sunflwr__pedal--11 {
+
+            transform: translate(-50%, -50%) rotate(135deg);
+
+        }
+
+
+
+        .sunflwr__pedal--12 {
+
+            transform: translate(-50%, -50%) rotate(165deg);
+
+        }
+
+
+
+        @keyframes grow-pedal-front {
+
+            0% {
+
+                height: 0%;
+
+                width: 0%;
+
+                border: 0px solid black;
+
+            }
+
+            100% {
+
+                height: 35%;
+
+                width: 10%;
+
+                border: 2px solid #d4af37;
+
+            }
+
+        }
+
+
+
+        /* Heart animation for extra romance */
+
+        .heart {
+
+            position: absolute;
+
+            width: 20px;
+
+            height: 20px;
+
+            background: linear-gradient(45deg, #ff6b9d, #f093fb);
+
+            transform: translate(-50%, -50%) rotate(-45deg);
+
+            animation: floatHeart 3s ease-in-out infinite;
+
+            pointer-events: none;
+
+            z-index: 10;
+
+            box-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+
+        }
+
+
+
+        .heart:before,
+
+        .heart:after {
+
+            content: '';
+
+            width: 20px;
+
+            height: 20px;
+
+            position: absolute;
+
+            left: 10px;
+
+            top: 0;
+
+            background: linear-gradient(45deg, #ff6b9d, #f093fb);
+
+            border-radius: 10px 10px 0 0;
+
+            transform: rotate(-45deg);
+
+            transform-origin: 0 10px;
+
+        }
+
+
+
+        .heart:after {
+
+            left: 0;
+
+            transform: rotate(45deg);
+
+            transform-origin: 10px 10px;
+
+        }
+
+
+
+        @keyframes floatHeart {
+
+            0% {
+
+                opacity: 1;
+
+                transform: translate(-50%, -50%) rotate(-45deg) translateY(0);
+
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform: translate(-50%, -50%) rotate(-45deg) translateY(-100px);
+
+            }
+
+        }
+
+
+
+        /* New flower alignment styles */
+
+        .new-flower {
+
+            position: absolute;
+
+            bottom: 0;
+
+            transition: all 0.5s ease-in-out;
+
+        }
+
+
+
+        /* Add some floating sparkles for extra romance */
+
+        @keyframes sparkle {
+
+            0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+
+            50% { opacity: 1; transform: scale(1) rotate(180deg); }
+
+        }
+
+
+
+        .sparkle {
+
+            position: absolute;
+
+            width: 8px;
+
+            height: 8px;
+
+            background: #fff;
+
+            border-radius: 50%;
+
+            animation: sparkle 3s infinite;
+
+            pointer-events: none;
+
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>Happy Monthsary Shy💕<br><small>Every click grows our love garden 💕</small></h1>
+
+
+
+    <div class="sunflwr">
+
+        <div class="sunflwr__leaf--left"></div>
+
+        <div class="sunflwr__leaf--right"></div>
+
+        <div class="sunflwr__stem"></div>
+
+        <div class="sunflwr__center"></div>
+
+        <div class="sunflwr__pedal--1"></div>
+
+        <div class="sunflwr__pedal--2"></div>
+
+        <div class="sunflwr__pedal--3"></div>
+
+        <div class="sunflwr__pedal--4"></div>
+
+        <div class="sunflwr__pedal--5"></div>
+
+        <div class="sunflwr__pedal--6"></div>
+
+        <div class="sunflwr__pedal--7"></div>
+
+        <div class="sunflwr__pedal--8"></div>
+
+        <div class="sunflwr__pedal--9"></div>
+
+        <div class="sunflwr__pedal--10"></div>
+
+        <div class="sunflwr__pedal--11"></div>
+
+        <div class="sunflwr__pedal--12"></div>
+
+    </div>
+
+
+
+    <script>
+
+        (function() {
+
+            // Add your 10 pictures here - just use the filename since they're in the same folder
+
+            const herPictures = [
+
+                'picture.jpg',  // Replace with actual filename
+
+                'picture2.jpg',  // Replace with actual filename
+
+                'picture3.jpg',  // Replace with actual filename
+
+                'picture4.jpg',  // Replace with actual filename
+
+                'picture5.jpg',  // Replace with actual filename
+
+                'picture6.jpg',  // Replace with actual filename
+
+                'picture7.jpg',  // Replace with actual filename
+
+                'picture8.jpg',  // Replace with actual filename
+
+                'picture9.jpg',  // Replace with actual filename
+
+                'picture10.jpg'  // Replace with actual filename
+
+            ];
+
+
+
+            // Different petal colors for variety - more romantic colors
+
+            const petalColors = [
+
+                'linear-gradient(45deg, #f2fe00, #ffeb3b)', // Original yellow
+
+                'linear-gradient(45deg, #ff6b9d, #f093fb)', // Pink gradient
+
+                'linear-gradient(45deg, #ff9a9e, #fecfef)', // Light pink gradient
+
+                'linear-gradient(45deg, #a8e6cf, #dcedc1)', // Mint green gradient
+
+                'linear-gradient(45deg, #ffd93d, #f9ca24)', // Golden yellow gradient
+
+                'linear-gradient(45deg, #ff8a80, #ffab91)', // Coral gradient
+
+                'linear-gradient(45deg, #b39ddb, #d1c4e9)', // Lavender gradient
+
+                'linear-gradient(45deg, #80cbc4, #b2dfdb)', // Teal gradient
+
+                'linear-gradient(45deg, #ffab91, #ffcc80)', // Peach gradient
+
+                'linear-gradient(45deg, #f8bbd9, #f48fb1)'  // Rose pink gradient
+
+            ];
+
+
+
+            let currentPictureIndex = 0;
+
+            let flowerCount = 0;
+
+            
+
+            // Pre-calculated positions in a grid-like pattern that avoids overlaps
+
+            const flowerPositions = [
+
+                // Left side arrangement
+
+                { left: 8, bottom: 0, size: 65 },   // Far left, smaller
+
+                { left: 22, bottom: 0, size: 70 },  // Left side, medium
+
+                { left: 35, bottom: 0, size: 60 },  // Left of center, small
+
+                
+
+                // Right side arrangement  
+
+                { left: 65, bottom: 0, size: 60 },  // Right of center, small
+
+                { left: 78, bottom: 0, size: 70 },  // Right side, medium
+
+                { left: 92, bottom: 0, size: 65 },  // Far right, smaller
+
+                
+
+                // Second row (slightly higher up to create depth)
+
+                { left: 15, bottom: 0, size: 55 },  // Left, small and higher
+
+                { left: 85, bottom: 0, size: 55 },  // Right, small and higher
+
+                
+
+                // Edge positions for last flowers
+
+                { left: 3, bottom: 0, size: 50 },   // Very edge left, tiny
+
+                { left: 97, bottom: 0, size: 50 }   // Very edge right, tiny
+
+            ];
+
+            
+
+            let positionIndex = 0;
+
+
+
+            function getRandomArbitrary(min, max) {
+
+                return Math.round(Math.random() * (max - min)) + min;
+
+            }
+
+
+
+            function getNextAvailablePosition() {
+
+                if (positionIndex >= flowerPositions.length) {
+
+                    return null; // No more positions available
+
+                }
+
+                
+
+                const position = flowerPositions[positionIndex];
+
+                positionIndex++;
+
+                return position;
+
+            }
+
+
+
+            function createHeart(x, y) {
+
+                const heart = document.createElement('div');
+
+                heart.classList.add('heart');
+
+                heart.style.left = x + 'px';
+
+                heart.style.top = y + 'px';
+
+                document.body.appendChild(heart);
+
+                
+
+                setTimeout(() => {
+
+                    heart.remove();
+
+                }, 3000);
+
+            }
+
+
+
+            function createSparkle(x, y) {
+
+                const sparkle = document.createElement('div');
+
+                sparkle.classList.add('sparkle');
+
+                sparkle.style.left = (x + getRandomArbitrary(-30, 30)) + 'px';
+
+                sparkle.style.top = (y + getRandomArbitrary(-30, 30)) + 'px';
+
+                sparkle.style.animationDelay = Math.random() * 2 + 's';
+
+                document.body.appendChild(sparkle);
+
+                
+
+                setTimeout(() => {
+
+                    sparkle.remove();
+
+                }, 3000);
+
+            }
+
+
+
+            function growFlower(clickX, clickY) {
+
+                if (currentPictureIndex >= herPictures.length) {
+
+                    // Create hearts and sparkles when all pictures are used
+
+                    for (let i = 0; i < 5; i++) {
+
+                        setTimeout(() => {
+
+                            createHeart(
+
+                                getRandomArbitrary(clickX - 50, clickX + 50),
+
+                                getRandomArbitrary(clickY - 50, clickY + 50)
+
+                            );
+
+                            createSparkle(clickX, clickY);
+
+                        }, i * 200);
+
+                    }
+
+                    return;
+
+                }
+
+
+
+                // Get next available position
+
+                const position = getNextAvailablePosition();
+
+                if (!position) {
+
+                    // No more positions available, create hearts instead
+
+                    createHeart(clickX, clickY);
+
+                    createSparkle(clickX, clickY);
+
+                    return;
+
+                }
+
+
+
+                const flwr = document.createElement('div');
+
+                const currentPicture = herPictures[currentPictureIndex];
+
+                const currentColor = petalColors[currentPictureIndex % petalColors.length];
+
+
+
+                flwr.classList.add('sunflwr', 'new-flower');
+
+                flwr.innerHTML = `
+
+                    <div class="sunflwr__leaf--left"></div>
+
+                    <div class="sunflwr__leaf--right"></div>
+
+                    <div class="sunflwr__stem"></div>
+
+                    <div class="sunflwr__center"></div>
+
+                    <div class="sunflwr__pedal--1"></div>
+
+                    <div class="sunflwr__pedal--2"></div>
+
+                    <div class="sunflwr__pedal--3"></div>
+
+                    <div class="sunflwr__pedal--4"></div>
+
+                    <div class="sunflwr__pedal--5"></div>
+
+                    <div class="sunflwr__pedal--6"></div>
+
+                    <div class="sunflwr__pedal--7"></div>
+
+                    <div class="sunflwr__pedal--8"></div>
+
+                    <div class="sunflwr__pedal--9"></div>
+
+                    <div class="sunflwr__pedal--10"></div>
+
+                    <div class="sunflwr__pedal--11"></div>
+
+                    <div class="sunflwr__pedal--12"></div>
+
+                `;
+
+
+
+                // Position the flower using pre-calculated safe positions
+
+                flwr.style.left = `${position.left}%`;
+
+                flwr.style.bottom = `${position.bottom}%`;
+
+                flwr.style.transform = `translate(-50%, 0%)`;
+
+                flwr.style.height = `${position.size}vmin`;
+
+                flwr.style.width = `${position.size}vmin`;
+
+                
+
+                // Z-index based on size for proper layering (smaller flowers in front)
+
+                flwr.style.zIndex = 100 - position.size;
+
+                
+
+                // Add slight random variations to make it look more natural
+
+                flwr.style.filter = `saturate(${getRandomArbitrary(90, 120)}%) brightness(${getRandomArbitrary(100, 130)}%)`;
+
+                
+
+                // Slight random rotation for natural look
+
+                const rotation = getRandomArbitrary(-10, 10);
+
+                flwr.style.transform = `translate(-50%, 0%) rotate(${rotation}deg)`;
+
+
+
+                // Set her picture as the center
+
+                const center = flwr.querySelector('.sunflwr__center');
+
+                center.style.backgroundImage = `url(${currentPicture})`;
+
+
+
+                // Change petal colors
+
+                const petals = flwr.querySelectorAll('[class*="sunflwr__pedal"]');
+
+                petals.forEach(petal => {
+
+                    petal.style.background = currentColor;
+
+                });
+
+
+
+                document.body.appendChild(flwr);
+
+                currentPictureIndex++;
+
+                flowerCount++;
+
+
+
+                // Create celebration hearts and sparkles
+
+                createHeart(clickX, clickY);
+
+                createSparkle(clickX, clickY);
+
+                setTimeout(() => {
+
+                    createHeart(clickX + 30, clickY - 20);
+
+                    createSparkle(clickX + 20, clickY - 10);
+
+                }, 300);
+
+                setTimeout(() => {
+
+                    createHeart(clickX - 30, clickY - 20);
+
+                    createSparkle(clickX - 20, clickY - 10);
+
+                }, 600);
+
+            }
+
+
+
+            document.body.addEventListener('click', (e) => {
+
+                growFlower(e.clientX, e.clientY);
+
+            });
+
+
+
+            // Set the first flower's center with her first picture
+
+            setTimeout(() => {
+
+                const firstCenter = document.querySelector('.sunflwr__center');
+
+                if (firstCenter && herPictures[0]) {
+
+                    firstCenter.style.backgroundImage = `url(${herPictures[0]})`;
+
+                    currentPictureIndex = 1;
+
+                }
+
+            }, 1000);
+
+
+
+            // Add some ambient sparkles
+
+            setInterval(() => {
+
+                createSparkle(
+
+                    getRandomArbitrary(100, window.innerWidth - 100),
+
+                    getRandomArbitrary(100, window.innerHeight - 100)
+
+                );
+
+            }, 2000);
+
+
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
