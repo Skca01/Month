@@ -412,7 +412,7 @@
                 'linear-gradient(45deg, #f8bbd9, #f48fb1)'  // Rose pink gradient
             ];
 
-            let currentPictureIndex = 0; // Start at 0 - first flower has no picture
+            let currentPictureIndex = -1; // Start at -1 so first flower (0) has no picture
             let flowerCount = 0;
             
             // Mobile-responsive flower positions
@@ -499,8 +499,12 @@
                 }
 
                 const flwr = document.createElement('div');
-                // Only use picture if we have one (index 1-10 have pictures, 0 has none)
-                const currentPicture = currentPictureIndex > 0 && currentPictureIndex <= herPictures.length ? 
+                
+                // Increment picture index first, then check for picture
+                currentPictureIndex++;
+                
+                // Pictures are available for flowers 1-10 (currentPictureIndex 0-9 in array)
+                const currentPicture = (currentPictureIndex >= 1 && currentPictureIndex <= 10) ? 
                                     herPictures[currentPictureIndex - 1] : null;
                 const currentColor = petalColors[flowerCount % petalColors.length];
 
@@ -545,6 +549,9 @@
                 const center = flwr.querySelector('.sunflwr__center');
                 if (currentPicture) {
                     center.style.backgroundImage = `url(${currentPicture})`;
+                    console.log(`Flower ${currentPictureIndex}: Using ${currentPicture}`);
+                } else {
+                    console.log(`Flower ${currentPictureIndex}: No picture (brown center)`);
                 }
 
                 // Change petal colors
@@ -554,7 +561,6 @@
                 });
 
                 document.body.appendChild(flwr);
-                currentPictureIndex++;
                 flowerCount++;
 
                 // Create celebration hearts and sparkles
