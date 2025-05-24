@@ -412,7 +412,7 @@
                 'linear-gradient(45deg, #f8bbd9, #f48fb1)'  // Rose pink gradient
             ];
 
-            let currentPictureIndex = -1; // Start at -1 so first flower (0) has no picture
+            let currentPictureIndex = 0; // Start at 0 for first picture
             let flowerCount = 0;
             
             // Mobile-responsive flower positions
@@ -500,12 +500,9 @@
 
                 const flwr = document.createElement('div');
                 
-                // Increment picture index first, then check for picture
-                currentPictureIndex++;
-                
-                // Pictures are available for flowers 1-10 (currentPictureIndex 0-9 in array)
-                const currentPicture = (currentPictureIndex >= 1 && currentPictureIndex <= 10) ? 
-                                    herPictures[currentPictureIndex - 1] : null;
+                // Use current picture if available (0-9 maps to picture.jpg through picture10.jpg)
+                const currentPicture = (currentPictureIndex < herPictures.length) ? 
+                                    herPictures[currentPictureIndex] : null;
                 const currentColor = petalColors[flowerCount % petalColors.length];
 
                 flwr.classList.add('sunflwr', 'new-flower');
@@ -549,9 +546,9 @@
                 const center = flwr.querySelector('.sunflwr__center');
                 if (currentPicture) {
                     center.style.backgroundImage = `url(${currentPicture})`;
-                    console.log(`Flower ${currentPictureIndex}: Using ${currentPicture}`);
+                    console.log(`Flower ${flowerCount + 1}: Using ${currentPicture}`);
                 } else {
-                    console.log(`Flower ${currentPictureIndex}: No picture (brown center)`);
+                    console.log(`Flower ${flowerCount + 1}: No more pictures available`);
                 }
 
                 // Change petal colors
@@ -561,6 +558,9 @@
                 });
 
                 document.body.appendChild(flwr);
+                
+                // Increment counters AFTER using the current picture
+                currentPictureIndex++;
                 flowerCount++;
 
                 // Create celebration hearts and sparkles
@@ -580,8 +580,15 @@
                 growFlower(e.clientX, e.clientY);
             });
 
-            // The first flower (index 0) should NOT get a picture - it starts empty
-            // Pictures only start from flower 1 (index 1) onwards
+            // Set the first flower's center with her first picture immediately
+            setTimeout(() => {
+                const firstCenter = document.querySelector('.sunflwr__center');
+                if (firstCenter && herPictures[0]) {
+                    firstCenter.style.backgroundImage = `url(${herPictures[0]})`;
+                    console.log(`Initial flower: Using ${herPictures[0]}`);
+                    currentPictureIndex = 1; // Next flower will use picture2.jpg
+                }
+            }, 1000);
 
             // Add some ambient sparkles
             setInterval(() => {
