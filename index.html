@@ -437,33 +437,33 @@
             let flowerCount = 0;
             let gardenStarted = false;
             
-            // Mobile-responsive flower positions
+            // Mobile-responsive flower positions with left-right alternating pattern
             function getFlowerPositions() {
                 const isMobile = window.innerWidth <= 768;
                 const positions = isMobile ? [
-                    // Mobile positions - fewer flowers, better spacing
-                    { left: 15, bottom: 0, size: 45 },
-                    { left: 35, bottom: 0, size: 50 },
-                    { left: 65, bottom: 0, size: 50 },
-                    { left: 85, bottom: 0, size: 45 },
-                    { left: 25, bottom: 0, size: 40 },
-                    { left: 75, bottom: 0, size: 40 },
-                    { left: 5, bottom: 0, size: 35 },
-                    { left: 95, bottom: 0, size: 35 },
-                    { left: 45, bottom: 0, size: 35 },
-                    { left: 55, bottom: 0, size: 35 }
+                    // Mobile positions - alternating left-right pattern
+                    { left: 15, bottom: 0, size: 45 },  // Left
+                    { left: 85, bottom: 0, size: 45 },  // Right
+                    { left: 25, bottom: 0, size: 50 },  // Left
+                    { left: 75, bottom: 0, size: 50 },  // Right
+                    { left: 5, bottom: 0, size: 40 },   // Left
+                    { left: 95, bottom: 0, size: 40 },  // Right
+                    { left: 35, bottom: 0, size: 45 },  // Left
+                    { left: 65, bottom: 0, size: 45 },  // Right
+                    { left: 10, bottom: 0, size: 35 },  // Left
+                    { left: 90, bottom: 0, size: 35 }   // Right
                 ] : [
-                    // Desktop positions
-                    { left: 8, bottom: 0, size: 65 },
-                    { left: 22, bottom: 0, size: 70 },
-                    { left: 35, bottom: 0, size: 60 },
-                    { left: 65, bottom: 0, size: 60 },
-                    { left: 78, bottom: 0, size: 70 },
-                    { left: 92, bottom: 0, size: 65 },
-                    { left: 15, bottom: 0, size: 55 },
-                    { left: 85, bottom: 0, size: 55 },
-                    { left: 3, bottom: 0, size: 50 },
-                    { left: 97, bottom: 0, size: 50 }
+                    // Desktop positions - alternating left-right pattern
+                    { left: 8, bottom: 0, size: 65 },   // Left
+                    { left: 92, bottom: 0, size: 65 },  // Right
+                    { left: 22, bottom: 0, size: 70 },  // Left
+                    { left: 78, bottom: 0, size: 70 },  // Right
+                    { left: 15, bottom: 0, size: 60 },  // Left
+                    { left: 85, bottom: 0, size: 60 },  // Right
+                    { left: 35, bottom: 0, size: 55 },  // Left
+                    { left: 65, bottom: 0, size: 55 },  // Right
+                    { left: 3, bottom: 0, size: 50 },   // Left
+                    { left: 97, bottom: 0, size: 50 }   // Right
                 ];
                 return positions;
             }
@@ -515,13 +515,12 @@
                 
                 gardenStarted = true;
                 
-                // Set the first picture on the initial flower
+                // Don't set any picture on the initial flower - keep it empty
                 const initialCenter = document.querySelector('.sunflwr__center.initial');
-                if (initialCenter && herPictures[0]) {
-                    initialCenter.style.backgroundImage = `url(${herPictures[0]})`;
+                if (initialCenter) {
                     initialCenter.classList.remove('initial'); // Remove pulse animation
-                    console.log(`Initial flower: Using ${herPictures[0]}`);
-                    currentPictureIndex = 1; // Next flower will use picture2.jpg
+                    console.log('Garden started - initial flower remains empty');
+                    // currentPictureIndex stays at 0 - first new flower will use picture.jpg
                 }
                 
                 // Update the title to indicate clicking anywhere will grow flowers
@@ -589,9 +588,9 @@
                 const center = flwr.querySelector('.sunflwr__center');
                 if (currentPicture) {
                     center.style.backgroundImage = `url(${currentPicture})`;
-                    console.log(`Flower ${flowerCount + 1}: Using ${currentPicture}`);
+                    console.log(`New flower ${flowerCount + 1}: Using ${currentPicture}`);
                 } else {
-                    console.log(`Flower ${flowerCount + 1}: No more pictures available`);
+                    console.log(`New flower ${flowerCount + 1}: No more pictures available`);
                 }
 
                 // Change petal colors
