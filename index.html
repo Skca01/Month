@@ -140,6 +140,13 @@
             background-position: center;
             border: 3px solid #8B4513;
             box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2);
+            cursor: pointer;
+        }
+
+        .sunflwr__center:hover {
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 25px rgba(255,255,255,0.4);
+            transform: translate(-50%, -50%) scale(1.05);
+            transition: all 0.3s ease;
         }
 
         @keyframes sunflwr__center {
@@ -305,6 +312,20 @@
             box-shadow: 0 0 10px rgba(255,255,255,0.8);
         }
 
+        /* Pulse animation for the initial flower center to indicate it's clickable */
+        .sunflwr__center.initial {
+            animation: sunflwr__center 1s 1s forwards, pulse 2s ease-in-out infinite 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2);
+            }
+            50% {
+                box-shadow: inset 0 0 10px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.6);
+            }
+        }
+
         /* Mobile-specific adjustments */
         @media (max-width: 768px) {
             .sunflwr {
@@ -361,13 +382,13 @@
     </style>
 </head>
 <body>
-    <h1>Happy Monthsary Shy💕<br><small>Every click grows our love garden 💕</small></h1>
+    <h1>Happy Monthsary Shy💕<br><small>Click the flower center to start our love garden 💕</small></h1>
 
     <div class="sunflwr">
         <div class="sunflwr__leaf--left"></div>
         <div class="sunflwr__leaf--right"></div>
         <div class="sunflwr__stem"></div>
-        <div class="sunflwr__center"></div>
+        <div class="sunflwr__center initial"></div>
         <div class="sunflwr__pedal--1"></div>
         <div class="sunflwr__pedal--2"></div>
         <div class="sunflwr__pedal--3"></div>
@@ -414,6 +435,7 @@
 
             let currentPictureIndex = 0; // Start at 0 for first picture
             let flowerCount = 0;
+            let gardenStarted = false;
             
             // Mobile-responsive flower positions
             function getFlowerPositions() {
@@ -486,6 +508,27 @@
                 setTimeout(() => {
                     sparkle.remove();
                 }, 3000);
+            }
+
+            function startGarden() {
+                if (gardenStarted) return;
+                
+                gardenStarted = true;
+                
+                // Set the first picture on the initial flower
+                const initialCenter = document.querySelector('.sunflwr__center.initial');
+                if (initialCenter && herPictures[0]) {
+                    initialCenter.style.backgroundImage = `url(${herPictures[0]})`;
+                    initialCenter.classList.remove('initial'); // Remove pulse animation
+                    console.log(`Initial flower: Using ${herPictures[0]}`);
+                    currentPictureIndex = 1; // Next flower will use picture2.jpg
+                }
+                
+                // Update the title to indicate clicking anywhere will grow flowers
+                const title = document.querySelector('h1 small');
+                if (title) {
+                    title.textContent = 'Every click grows our love garden 💕';
+                }
             }
 
             function growFlower(clickX, clickY) {
@@ -576,19 +619,22 @@
                 }, 600);
             }
 
-            document.body.addEventListener('click', (e) => {
-                growFlower(e.clientX, e.clientY);
-            });
-
-            // Set the first flower's center with her first picture immediately
-            setTimeout(() => {
-                const firstCenter = document.querySelector('.sunflwr__center');
-                if (firstCenter && herPictures[0]) {
-                    firstCenter.style.backgroundImage = `url(${herPictures[0]})`;
-                    console.log(`Initial flower: Using ${herPictures[0]}`);
-                    currentPictureIndex = 1; // Next flower will use picture2.jpg
+            // Handle clicks on the initial flower center
+            document.addEventListener('click', (e) => {
+                // Check if the click was on the initial flower center
+                if (e.target.classList.contains('initial')) {
+                    e.stopPropagation();
+                    startGarden();
+                    createHeart(e.clientX, e.clientY);
+                    createSparkle(e.clientX, e.clientY);
+                    return;
                 }
-            }, 1000);
+                
+                // Only grow flowers if the garden has started
+                if (gardenStarted) {
+                    growFlower(e.clientX, e.clientY);
+                }
+            });
 
             // Add some ambient sparkles
             setInterval(() => {
